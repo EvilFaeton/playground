@@ -35,6 +35,13 @@ module.exports = function(api) {
           exclude: ['transform-typeof-symbol']
         }
       ],
+      [
+        "@babel/preset-react",
+        {
+          development: isDevelopmentEnv || isTestEnv,
+          useBuiltIns: true,
+        },
+      ],
       ['@babel/preset-typescript', { 'allExtensions': true, 'isTSX': true }]
     ].filter(Boolean),
     plugins: [
@@ -57,7 +64,9 @@ module.exports = function(api) {
       [
         '@babel/plugin-transform-runtime',
         {
-          helpers: false
+          helpers: false,
+          regenerator: true,
+          corejs: false
         }
       ],
       [
@@ -65,7 +74,8 @@ module.exports = function(api) {
         {
           async: false
         }
-      ]
+      ],
+      ['@babel/plugin-proposal-private-methods', { loose: true }]
     ].filter(Boolean)
   }
 }

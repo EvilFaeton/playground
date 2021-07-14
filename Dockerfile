@@ -1,7 +1,9 @@
 # syntax=docker/dockerfile:1
 FROM ruby:2.6
-RUN apt-get update -qq && apt-get install -y postgresql-client
+RUN apt-get update -qq && apt-get install -y postgresql-client libappindicator1 fonts-liberation
 
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN apt install -y ./google-chrome-stable_current_amd64.deb
 
 # Node.js
 ENV NODE_VERSION=14.x

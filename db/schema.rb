@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2021_07_12_122757) do
 
   create_table "cart_products", force: :cascade do |t|
     t.integer "cart_id", null: false
-    t.integer "gross_price", null: false
-    t.integer "total_price", null: false
+    t.integer "gross_price_cents", null: false
+    t.integer "total_price_cents", null: false
     t.integer "product_id", null: false
     t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_07_12_122757) do
 
   create_table "discount_rules", force: :cascade do |t|
     t.string "discount_type", null: false
-    t.integer "amount", null: false
+    t.float "amount", null: false
     t.integer "value", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_07_12_122757) do
   create_table "products", force: :cascade do |t|
     t.string "identifier", null: false
     t.string "title"
-    t.integer "price", null: false
+    t.integer "price_cents", null: false
     t.integer "discount_rule_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
